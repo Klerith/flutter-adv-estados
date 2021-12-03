@@ -2,6 +2,7 @@ part of 'user_bloc.dart';
 
 @immutable
 abstract class UserState {
+
   final bool existUser;
   final User? user;
 
@@ -9,8 +10,16 @@ abstract class UserState {
     this.existUser = false, 
     this.user
   });
+
 }
 
-class UserInitial extends UserState {
-  const UserInitial() : super( existUser: false, user: null );
+class UserInitialState extends UserState {
+  const UserInitialState(): super( existUser: false, user: null );
 }
+
+class UserSetState extends UserState {
+  final User newUser;
+  const UserSetState(this.newUser)
+    : super(existUser: true, user: newUser );
+}
+
